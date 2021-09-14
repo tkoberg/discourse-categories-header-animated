@@ -1,0 +1,23 @@
+<div
+  class="categories-header-item
+    {{if category.uploaded_logo.url "has-logo" "no-logo"}}"
+>
+  <h3 class="category-title">
+    <a class="category-title-link" href={{category.url}}>
+      {{#if category.uploaded_logo.url}}
+        {{cdn-img
+          src=category.uploaded_logo.url
+          class="category-logo"
+          width=category.uploaded_logo.width
+          height=category.uploaded_logo.height
+          alt=""
+        }}
+      {{/if}}
+      {{category-title-before category=category}}
+      {{#if category.read_restricted}}
+        {{d-icon "lock"}}
+      {{/if}}
+      <span class="category-name">{{dir-span category.name}}</span>
+    </a>
+  </h3>
+</div>
