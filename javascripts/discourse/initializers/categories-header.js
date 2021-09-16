@@ -5,14 +5,17 @@ export default {
   name: "categories-header",
   initialize() {
     withPluginApi("0.8.7", (api) => {
-      const categories = Category.list();
+
+      const idList = settings.featured_categories.split("|");
+      const featuredCategories = idList.map(id => Category.findById(id));
+
       api.registerConnectorClass("below-site-header", "categories-header", {
         setupComponent(args, component) {
           api.onPageChange((url, title) => {
             if (url === "/" || url === "/latest") {
               $("html").addClass("categories-header");
               // add a class to the HTML tag for easy CSS targetting
-              component.set("categories", categories);
+              component.set("categories", featuredCategories);
             } else {
               // If the page doesn't match the urls above
               $("html").removeClass("categories-header");
