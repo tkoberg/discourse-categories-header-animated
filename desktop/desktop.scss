@@ -1,0 +1,40 @@
+html.categories-header {
+  .below-site-header-outlet.categories-header {
+    margin: 4rem 0 2rem 0;
+    .wrap {
+      display: flex;
+      flex-direction: row;
+      column-gap: $gap;
+      justify-content: center;
+      align-items: center;
+      .categories-header-item {
+        h3.category-title {
+          margin: 0;
+          padding: 0;
+          .category-title-link {
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            row-gap: 1rem;
+            .category-logo.aspect-image {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 0;
+              padding: 0;
+              width: $frame_size;
+              height: $frame_size;
+              background-color: $frame_bg_color;
+              border-radius: $frame_border_radius;
+              img {
+                width: $logo-size;
+                height: $logo-size;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
