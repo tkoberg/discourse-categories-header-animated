@@ -37,6 +37,7 @@ html.categories-header {
               display: flex;
               flex-direction: row;
               column-gap: .4em;
+              white-space: nowrap;
               .category-icon-widget {
                 line-height: normal; 
                 //correct alignment for icons from the category-icons component
