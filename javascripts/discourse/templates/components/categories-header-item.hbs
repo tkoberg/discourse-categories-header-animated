@@ -13,11 +13,13 @@
           alt=""
         }}
       {{/if}}
-      {{category-title-before category=category}}
-      {{#if category.read_restricted}}
-        {{d-icon "lock"}}
-      {{/if}}
-      <span class="category-name">{{dir-span category.name}}</span>
+      <div class="category-icon-name">
+        {{category-title-before category=category}}
+        {{#if category.read_restricted}}
+          {{d-icon "lock"}}
+        {{/if}}
+        <span class="category-name">{{dir-span category.name}}</span>
+      </div>
     </a>
   </h3>
 </div>

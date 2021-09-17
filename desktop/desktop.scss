@@ -32,6 +32,16 @@ html.categories-header {
                 height: $logo-size;
               }
             }
+            .category-icon-name { 
+              //add this class to align icons and name on one row
+              display: flex;
+              flex-direction: row;
+              column-gap: .4em;
+              .category-icon-widget {
+                line-height: normal; 
+                //correct alignment for icons from the category-icons component
+              }
+            }
           }
         }
       }
