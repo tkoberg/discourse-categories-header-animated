@@ -2,18 +2,21 @@ featured_categories:
   type: list
   list_type: category
   default: ""
-frame_size:
-  type: string
-  default: "80px"
 frame_border_radius:
   type: string
   default: "50%"
 frame_bg_color:
   type: string
   default: "var(--primary-low)"
-logo_size:
+logo_height:
   type: string
-  default: "40px"
+  default: "70px"
+logo_width:
+  type: string
+  default: "105px"
+speed:
+  type: string
+  default: "80s"
 gap:
   type: string
-  default: "40px"
+  default: "10px"

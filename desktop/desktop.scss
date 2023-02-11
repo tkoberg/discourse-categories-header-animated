@@ -1,12 +1,41 @@
+@function str-split($string, $separator) {
+    // empty array/list
+    $split-arr: ();
+    // first index of separator in string
+    $index : str-index($string, $separator);
+    // loop through string
+    @while $index != null {
+        // get the substring from the first character to the separator
+        $item: str-slice($string, 1, $index - 1);
+        // push item to array
+        $split-arr: append($split-arr, $item);
+        // remove item and separator from string
+        $string: str-slice($string, $index + 1);
+        // find new index of separator
+        $index : str-index($string, $separator);
+    }
+    // add the remaining string to list (the last item)
+    $split-arr: append($split-arr, $string);
+
+    @return $split-arr;
+}
+
+$logo_count: length(str-split($featured_categories, '|'));
+
 html.categories-header {
   .below-site-header-outlet.categories-header {
     margin: 4rem 0 2rem 0;
+	font-size: 0;
     .wrap {
+	  overflow: hidden;
+	  margin: 0 auto;
+	  white-space: nowrap;
+	  font-size: initial;
       display: flex;
       flex-direction: row;
       column-gap: $gap;
-      justify-content: center;
-      align-items: center;
+      justify-content: left;
+      /* align-items: left; */
       .categories-header-item {
         h3.category-title {
           margin: 0;
@@ -17,6 +46,7 @@ html.categories-header {
             flex-direction: column;
             align-items: center;
             row-gap: 1rem;
+			/*
             .category-logo.aspect-image {
               display: flex;
               align-items: center;
@@ -27,11 +57,12 @@ html.categories-header {
               height: $frame_size;
               background-color: $frame_bg_color;
               border-radius: $frame_border_radius;
+			  */
               img {
-                width: $logo-size;
-                height: $logo-size;
+                width: $logo_width;
+                height: $logo_height;
               }
-            }
+            /*}*/
             .category-icon-name { 
               //add this class to align icons and name on one row
               display: flex;
@@ -46,6 +77,17 @@ html.categories-header {
           }
         }
       }
-    }
-  }
+    }	
+	.wrap > div:first-child {
+		animation: bannermove $speed linear infinite;
+	}
+	.wrap:hover {
+		animation-play-state: paused;
+	}
+ }
+}
+
+@keyframes "bannermove" {
+	0%   { margin-left: 0px; }
+	100% { margin-left: calc( #{-$logo_count} * (#{$logo_width} + #{$gap})); }
 }
