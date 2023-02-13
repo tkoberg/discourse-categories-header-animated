@@ -21,6 +21,7 @@
 }
 
 $logo_count: length(str-split($featured_categories, '|'));
+$animation-offset: calc( #{-$logo_count} * (#{$logo_width} + #{$gap}));
 
 html.categories-header {
   .below-site-header-outlet.categories-header {
@@ -79,7 +80,11 @@ html.categories-header {
       }
     }	
 	.wrap > div:first-child {
-		animation: bannermove $speed linear infinite;
+		-webkit-animation: bannermove $speed linear infinite;
+		-moz-animation:    bannermove $speed linear infinite;
+		-ms-animation:     bannermove $speed linear infinite;
+		-o-animation:      bannermove $speed linear infinite;
+		animation:         bannermove $speed linear infinite;
 	}
 	.wrap:hover {
 		animation-play-state: paused;
@@ -87,7 +92,28 @@ html.categories-header {
  }
 }
 
+
 @keyframes "bannermove" {
-	0%   { margin-left: 0px; }
-	100% { margin-left: calc( #{-$logo_count} * (#{$logo_width} + #{$gap})); }
+  0%   { margin-left: 0px; }
+  100% { margin-left: $animation-offset; }
+}
+
+@-moz-keyframes bannermove {
+  0%   { margin-left: 0px; }
+  100% { margin-left: $animation-offset; }
+}
+ 
+@-webkit-keyframes "bannermove" {
+  0%   { margin-left: 0px; }
+  100% { margin-left: $animation-offset; }
+}
+ 
+@-ms-keyframes "bannermove" {
+  0%   { margin-left: 0px; }
+  100% { margin-left: $animation-offset; }
+}
+ 
+@-o-keyframes "bannermove" {
+  0%   { margin-left: 0px; }
+  100% { margin-left: $animation-offset; }
 }
